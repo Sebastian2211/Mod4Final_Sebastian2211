@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/database.js'; // Adjust the import path as needed
+import sequelize from '../config/database.js';
 
 
 class User extends Model { }
