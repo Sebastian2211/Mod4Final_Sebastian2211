@@ -31,7 +31,6 @@ function LoginForm() {
         }
     };
 
-    // Render the login form JSX here
 }
 
 export default LoginForm;

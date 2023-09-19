@@ -38,8 +38,6 @@ function RegistrationForm() {
             console.error('Error registering user:', error);
         }
     };
-
-    // Render the registration form JSX here, and use handleInputChange to update formData
 }
 
 export default RegistrationForm;

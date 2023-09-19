@@ -6,8 +6,7 @@ function Dashboard() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch user data from the server using the JWT token
-        const token = localStorage.getItem('token'); // Retrieve the token from local storage
+        const token = localStorage.getItem('token');
         if (token) {
             fetch('http://localhost:3000/profile', {
                 method: 'GET',
@@ -19,7 +18,7 @@ function Dashboard() {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        // Handle authentication error (e.g., token expired)
+                        // Handle authentication error
                         console.error('Authentication failed');
                         navigate('/login'); // Redirect to the login page
                     }
@@ -33,7 +32,6 @@ function Dashboard() {
         }
     }, []);
 
-    // Render the dashboard JSX here, displaying user data
 }
 
 export default Dashboard;
