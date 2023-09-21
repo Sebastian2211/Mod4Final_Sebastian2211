@@ -19,11 +19,9 @@ function LoginForm() {
 
             if (response.ok) {
                 const data = await response.json();
-                // Save the token to local storage or state for future requests
-                // Redirect to the dashboard or login page
+                localStorage.setItem('token', data.token);
                 navigate('/dashboard');
             } else {
-                // Handle login error (e.g., incorrect credentials)
                 console.error('Login failed');
             }
         } catch (error) {
@@ -31,6 +29,36 @@ function LoginForm() {
         }
     };
 
+    return (
+        <div>
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        value={formData.username}
+                        onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                    />
+                </div>
+                <div>
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    );
 }
 
 export default LoginForm;

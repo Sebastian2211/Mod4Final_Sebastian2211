@@ -31,7 +31,6 @@ function RegistrationForm() {
                 // Redirect to the dashboard or login page
                 navigate('/dashboard');
             } else {
-                // Handle registration error (e.g., username already exists)
                 console.error('Registration failed');
             }
         } catch (error) {

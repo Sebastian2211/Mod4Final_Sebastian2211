@@ -17,6 +17,7 @@ User.init(
         },
     },
     {
+        timestamps: false, // Don't add the timestamp attributes (updatedAt, createdAt)
         sequelize, // Pass the Sequelize instance
         modelName: 'User', // Set the model name
     }

@@ -16,21 +16,15 @@ function NoteForm({ onNoteAdded }) {
         e.preventDefault();
 
         try {
-            // Send a POST request to create a new note
-            const response = await axios.post('/api/notes', formData);
-            // Handle successful note creation here
+            const response = await axios.post('http://localhost:3000/notes', formData);
             console.log('Note created:', response.data);
 
-            // Clear the form fields
             setFormData({
                 title: '',
                 content: '',
             });
-
-            // Notify the parent component that a note has been added
             onNoteAdded();
         } catch (error) {
-            // Handle note creation error, e.g., display error message to user
             console.error('Note creation error:', error);
         }
     };
