@@ -25,7 +25,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 sequelize.sync().then(() => {
     console.log('Database & tables created!');
@@ -144,8 +144,19 @@ app.post('/notes', async (req, res) => {
     }
 });
 
-// Retrieve user's notes
+// Retrieve all notes
 app.get('/notes', async (req, res) => {
+    try {
+        const notes = await Note.findAll();
+        res.json({ data: notes });
+    } catch (error) {
+        console.error('Error fetching notes:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+// Retrieve user's notes
+app.get('/notes/userId', async (req, res) => {
     try {
         console.log('req.user:', req.user);
         if (!req.user) {

@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 function RegistrationForm() {
     const [formData, setFormData] = useState({ username: '', password: '' });
     const navigate = useNavigate();
 
     const handleInputChange = (e) => {
-        // Update the formData state based on user input
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -27,8 +23,6 @@ function RegistrationForm() {
             });
 
             if (response.ok) {
-                // Save the token to local storage or state for future requests
-                // Redirect to the dashboard or login page
                 navigate('/dashboard');
             } else {
                 console.error('Registration failed');
@@ -37,6 +31,39 @@ function RegistrationForm() {
             console.error('Error registering user:', error);
         }
     };
+
+    return (
+        <div>
+            <h2>Registration</h2>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        value={formData.username}
+                        onChange={handleInputChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+        </div>
+    );
 }
 
 export default RegistrationForm;

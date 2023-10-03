@@ -76,7 +76,7 @@ function Dashboard() {
 
     const handleNoteAdded = () => {
         // Fetch updated notes after adding a new note
-        fetch('http://localhost:3000/notes/:id', {
+        fetch('http://localhost:3000/notes', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -176,8 +176,8 @@ function Dashboard() {
                                 <ul>
                                     {notes.map((note) => (
                                         <li key={note.id}>
-                                            <strong>{note.title}</strong>
-                                            <p>{note.content}</p>
+                                            <h4 className='note-title'>{note.title}</h4>
+                                            <p className='note-content'>{note.content}</p>
                                         </li>
                                     ))}
                                 </ul>
