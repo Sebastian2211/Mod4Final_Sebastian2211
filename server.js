@@ -156,7 +156,7 @@ app.get('/notes', async (req, res) => {
 });
 
 // Retrieve user's notes
-app.get('/notes/userId', async (req, res) => {
+app.get('/notes/user', async (req, res) => {
     try {
         console.log('req.user:', req.user);
         if (!req.user) {
