@@ -110,33 +110,31 @@ function Dashboard() {
             console.error('Note creation error:', error);
         }
     };
-    console.log('notes', notes);
+    // console.log('notes', notes);
     return (
-        <div>
+        <div className='notes-body'>
+            <h2 className='main-header'>Welcome!</h2>
+            <div className='notes-input'>
+                <h3 className='create'>Create a New Note</h3>
+                <NoteForm onNoteAdded={handleNoteAdded} />
+            </div>
             <div>
-                <h2>Welcome!</h2>
-                <div>
-                    <h3>Create a New Note</h3>
-                    <NoteForm onNoteAdded={handleNoteAdded} />
-                </div>
-                <div>
-                    <h3>Your Notes</h3>
-                    {notes.length > 0 ? (
-                        <div>
-                            <NoteList notes={notes} />
-                            <ul>
-                                {notes.map((note) => (
-                                    <li key={note.id}>
-                                        <h4 className='note-title'>{note.title}</h4>
-                                        <p className='note-content'>{note.content}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ) : (
-                        <p>No notes found.</p>
-                    )}
-                </div>
+                <h3 className='create'>Your Notes</h3>
+                {notes.length > 0 ? (
+                    <div className='notes-inside'>
+                        <NoteList notes={notes} />
+                        <ul>
+                            {notes.map((note) => (
+                                <li key={note.id}>
+                                    <h4 className='note-title'>{note.title}</h4>
+                                    <p className='note-content'>{note.content}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ) : (
+                    <p>No notes found.</p>
+                )}
             </div>
         </div>
     );
