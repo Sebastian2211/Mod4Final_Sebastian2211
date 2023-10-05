@@ -1,5 +1,9 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function RegistrationForm() {
     const [formData, setFormData] = useState({ username: '', password: '' });
+    const [registrationStatus, setRegistrationStatus] = useState(null); // ['success', 'error', null]
     const navigate = useNavigate();
 
     const handleInputChange = (e) => {
@@ -23,11 +27,14 @@ function RegistrationForm() {
             });
 
             if (response.ok) {
+                setRegistrationStatus('success');
                 navigate('/dashboard');
             } else {
+                setRegistrationStatus('error');
                 console.error('Registration failed');
             }
         } catch (error) {
+            setRegistrationStatus('error');
             console.error('Error registering user:', error);
         }
     };
@@ -35,6 +42,12 @@ function RegistrationForm() {
     return (
         <div>
             <h2>Registration</h2>
+            {registrationStatus === 'success' && (
+                <p>Registration successful! You can now log in.</p>
+            )}
+            {registrationStatus === 'error' && (
+                <p>Registration failed. Please try again.</p>
+            )}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>

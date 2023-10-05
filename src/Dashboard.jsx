@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NoteList from './NoteList';
 import NoteForm from './NoteForm';
+import EditForm from './EditForm';
 
 function Dashboard() {
     const [userData, setUserData] = useState(null);
@@ -10,6 +11,9 @@ function Dashboard() {
         title: '',
         content: '',
     });
+
+    const [editedNote, setEditedNote] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
 
     const navigate = useNavigate();
 
@@ -86,6 +90,67 @@ function Dashboard() {
         });
     };
 
+    const handleDeleteNote = (noteId) => {
+        console.log('Deleting note with ID:', noteId);
+        const token = localStorage.getItem('token');
+        fetch(`http://localhost:3000/notes/${noteId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    console.log(`Note with ID ${noteId} deleted successfully`);
+                    // Fetch updated notes after deletion
+                    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== noteId));
+                } else {
+                    console.error(`Error deleting note with ID ${noteId}`);
+                }
+            })
+            .catch((error) => {
+                console.error(`Error deleting note with ID ${noteId}:`, error);
+            });
+    };
+
+    const startEditingNote = (note) => {
+        setEditedNote(note);
+        setIsEditing(true);
+    };
+
+    const cancelEditingNote = () => {
+        setEditedNote(null);
+        setIsEditing(false);
+    };
+
+    const updateNote = (updateNote) => {
+        console.log('Updating note with ID:', updateNote.id);
+        const token = localStorage.getItem('token');
+        fetch(`http://localhost:3000/notes/${updateNote.id}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updateNote),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    console.log(`Note with ID ${updateNote.id} updated successfully`);
+                    // Fetch updated notes after update
+                    fetchUserNotes(token);
+                    cancelEditingNote();
+                } else {
+                    console.error(`Error updating note with ID ${updateNote.id}`);
+                }
+            })
+            .catch((error) => {
+                console.error(`Error updating note with ID ${updateNote.id}:`, error);
+            });
+    };
+
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -122,22 +187,36 @@ function Dashboard() {
                 <h3 className='create'>Your Notes</h3>
                 {notes.length > 0 ? (
                     <div className='notes-inside'>
-                        <NoteList notes={notes} />
+                        <NoteList
+                            notes={notes}
+                            onDeleteNote={handleDeleteNote}
+                            onEditNote={startEditingNote} // Pass the startEditingNote function to NoteList
+                        />
                         <ul>
-                            {notes.map((note) => (
+                            {/* {notes.map((note) => (
                                 <li key={note.id}>
                                     <h4 className='note-title'>{note.title}</h4>
                                     <p className='note-content'>{note.content}</p>
                                 </li>
-                            ))}
+                            ))} */}
                         </ul>
                     </div>
                 ) : (
                     <p>No notes found.</p>
                 )}
             </div>
+            {isEditing && (
+                // Render the EditForm component when editing is in progress
+                <EditForm
+                    note={editedNote}
+                    onUpdateNote={updateNote}
+                    onCancelEdit={cancelEditingNote}
+                />
+            )}
         </div>
     );
+
+
 }
 
 export default Dashboard;

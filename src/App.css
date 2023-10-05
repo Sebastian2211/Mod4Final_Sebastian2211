@@ -1,166 +1,186 @@
- * html,
- body {
-   font-size: 16px;
-   font-family: Arial, sans-serif;
-   background-color: #3d3d3d;
-   color: #000000;
-   margin: 0;
-   padding: 0;
-   max-height: 100vh;
-   max-width: 100vw;
-   overflow-x: hidden;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   box-sizing: border-box;
- }
+html,
+body {
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  background-color: #3d3d3d;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  box-sizing: border-box;
+}
 
- h2 {
-   text-align: center;
-   padding: 10px;
-   margin-top: 50px;
-   max-width: 50%;
-   font-size: 3rem;
+h2 {
+  text-align: center;
+  padding: 10px;
+  margin-top: 50px;
+  max-width: 50%;
+  font-size: 3rem;
 
- }
+}
 
- button {
-   background-color: #4CAF50;
-   border: none;
-   color: white;
-   padding: 10px 20px;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   font-size: 1.5rem;
-   margin: 4px 2px;
-   cursor: pointer;
-   border-radius: 10px;
- }
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  max-width: 150px;
+}
 
- .center-container {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
- }
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
- .login-form {
-   text-align: center;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   max-height: 50vh;
-   max-width: 50vw;
- }
+.login-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-height: 50vh;
+  max-width: 50vw;
+}
 
- .form-group {
-   height: 50%;
-   width: 70%;
-   margin-bottom: 0;
-   padding: 0;
- }
+.form-group {
+  height: 50%;
+  width: 70%;
+  margin-bottom: 0;
+  padding: 0;
+}
 
- .input-field {
-   width: 100%;
-   height: 100%;
-   padding: 1px;
- }
+.input-field {
+  width: 100%;
+  height: 100%;
+  padding: 1px;
+}
 
- button {
-   margin-top: 10px;
-   height: 10%;
-   width: 100%;
- }
+button {
+  margin-top: 10px;
+  height: 10%;
+  width: 100%;
+}
 
- .note-title {
-   font-size: 2rem;
-   margin-top: 50px;
-   margin-bottom: 50px;
-   color: #9e0000;
- }
+.login-title {
+  font-size: 3rem;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #9e0000;
+  display: flex;
+  justify-content: center;
 
- .note-content {
-   height: 20px;
-   width: 20px;
-   font-size: 1.5rem;
-   margin-top: 50px;
-   margin-bottom: 50px;
-   color: #a50000;
- }
+}
 
- .main-header {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   max-height: 10%;
-   max-width: 100%;
-   color: white;
-   font-size: 2rem;
-   margin: 50px;
- }
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 50%;
+  max-width: 80%;
+  padding: 10px;
+  margin: 10px;
+  background-color: #1111113b;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
 
- .notes-body {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-wrap: wrap;
-   max-height: 100%;
-   max-width: 100%;
-   margin: 10px;
-   padding: 10px;
-   background-color: #1111113b;
-   border-radius: 10px;
-   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+.note-title {
+  font-size: 2rem;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #9e0000;
+}
+
+.note-content {
+  height: 20px;
+  width: 20px;
+  font-size: 1.5rem;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #a50000;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 10%;
+  max-width: 100%;
+  color: white;
+  font-size: 2rem;
+  margin: 50px;
+}
+
+.notes-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 100%;
+  max-width: 100%;
+  margin: 10px;
+  padding: 10px;
+  background-color: #1111113b;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
 
- }
+}
 
- .notes-input {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   max-height: 50%;
-   max-width: 50%;
-   padding: 10px;
-   margin: 10px;
-   background-color: #1111113b;
-   text-align: center;
-   border-radius: 10px;
-   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
- }
+.notes-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 50%;
+  max-width: 50%;
+  padding: 10px;
+  margin: 10px;
+  background-color: #1111113b;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
 
- label {
-   font-size: 1.5rem;
-   margin-top: 20px;
-   margin-bottom: 20px;
-   color: #a50000;
-   display: inline-block;
-   width: 100px;
-   text-align: start;
- }
+label {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #a50000;
+  display: inline-block;
+  width: 100px;
+  text-align: start;
+}
 
- .notes-inside {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   max-height: 90%;
-   max-width: 90%;
-   margin: 50px;
-   border-radius: 10px;
-   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
- }
+.notes-inside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 100vh;
+  max-width: 100vh;
+  margin: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
 
- .create {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   max-height: 10%;
-   max-width: 100%;
-   color: white;
-   font-size: 2rem;
-   margin: 50px;
-   text-align: center;
- }
+.create {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 10%;
+  max-width: 100%;
+  color: white;
+  font-size: 2rem;
+  margin: 50px;
+  text-align: center;
+}

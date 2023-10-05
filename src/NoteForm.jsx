@@ -28,18 +28,14 @@ function NoteForm({ onNoteAdded }) {
             if (response.ok) {
                 const data = await response.json();
                 console.log('data', data);
-                // You can handle the data as needed here
-                // For example, you can add the new note to your state or perform any other actions
             } else {
                 console.error('Note creation error:', response);
             }
-
-            // Reset the form and trigger any necessary actions
             setFormData({
                 title: '',
                 content: '',
             });
-            onNoteAdded(); // Make sure this function is defined and does what you intend
+            onNoteAdded();
         } catch (error) {
             console.error('Note creation error:', error);
         }
@@ -47,7 +43,6 @@ function NoteForm({ onNoteAdded }) {
 
     return (
         <div>
-            <h3>Create a New Note</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="title">Title:</label>

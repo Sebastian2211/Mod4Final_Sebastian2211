@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function LoginForm() {
     const [formData, setFormData] = useState({ username: '', password: '' });
@@ -30,10 +30,11 @@ function LoginForm() {
     };
 
     return (
-        <div>
-            <h2>Login</h2>
+        <div className='login-form'>
+            <h2 className='login-title'>Login</h2>
+            <Link to='/register'>Register</Link>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className='login-inputs'>
                     <label htmlFor="username">Username:</label>
                     <input
                         type="text"
@@ -43,7 +44,7 @@ function LoginForm() {
                         onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                     />
                 </div>
-                <div>
+                <div className='login-inputs'>
                     <label htmlFor="password">Password:</label>
                     <input
                         type="password"
