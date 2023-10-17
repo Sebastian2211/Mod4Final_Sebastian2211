@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function RegistrationForm() {
     const [formData, setFormData] = useState({ username: '', password: '' });
-    const [registrationStatus, setRegistrationStatus] = useState(null); // ['success', 'error', null]
+    const [registrationStatus, setRegistrationStatus] = useState(null);
     const navigate = useNavigate();
 
     const handleInputChange = (e) => {
